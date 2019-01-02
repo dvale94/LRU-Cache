@@ -1,8 +1,10 @@
-package lrucache;
-
-/*
+/**
+ * Tester Class to test the implementation of the LRU Cache
+ * with insertions and retrievals of entries.  
+ * 
  * Daniel Valencia
- */
+ **/
+
 public class LRUCacheTester {
 
     
@@ -26,6 +28,24 @@ public class LRUCacheTester {
         test("Get 1 should be 10", cache.get(1) == 10);
         test("Get 2 should be 20", cache.get(2) == 20);
         test("Get 3 should be 30", cache.get(3) == 30);
+        
+        cache.get(2);
+	cache.get(3);
+	cache.get(4);
+	cache.putEntry(5,50);
+	System.out.println("\nCache Contents:");
+	System.out.println(cache.list());
+	test("Should Remove LRU (1,10)", cache.get(1) == -1);
+        
+        cache.get(2);
+	cache.get(3);
+	cache.get(4);
+	cache.get(5);
+	cache.get(2);
+	cache.putEntry(6,6);
+	System.out.println("\nCache Contents:");
+	System.out.println(cache.list());
+	test("Should Remove LRU (3,30)", cache.get(3) == -1);
         
     }
     

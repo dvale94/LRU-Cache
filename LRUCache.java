@@ -1,10 +1,16 @@
-package lrucache;
 import java.util.HashMap;
 
 /**
- *
- * @author Daniel Valencia
- */
+ * A Least Recently Used Cache implemented with the use of a HashMap and a 
+ * Doubly Linked List. The HashMap will hold the keys and address of the Nodes 
+ * of the Doubly Linked List. The Doubly Linked List implements a queue that
+ * will hold the values of the keys. Whenever any entry is accessed, it will 
+ * be moved to the top of the queue. When the cache is full and a entry needs 
+ * to be added, the entry at the end of the queue is removed and the new entry 
+ * is inserted at the beginning of the queue.
+ * 
+ * Daniel Valencia
+ **/
 
 /* 
  * Class for the nodes of the doubly linked list.
@@ -66,9 +72,9 @@ public class LRUCache {
     }  
     
     /* 
-     * Inserts the given element into the queue.
+     * Inserts the given entry into the queue.
      * If the key exist, update the value and move it to head of queue
-     * If max queue size is reached, make room for new element.
+     * If max queue size is reached, make room for the new entry.
      */
     public void putEntry(int key, int value) {
 	if (map.containsKey(key)) {
@@ -112,7 +118,7 @@ public class LRUCache {
 	return -1;
     }
     
-    /* Returns a HashMap of the current keys and elements in the
+    /* Returns a HashMap of the current keys and nodes in the
      * cache
      */
 	public HashMap list() {
