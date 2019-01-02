@@ -111,4 +111,19 @@ public class LRUCache {
 	}
 	return -1;
     }
+    
+    /* Returns a HashMap of the current keys and elements in the
+     * cache
+     */
+	public HashMap list() {
+            HashMap<Integer, Node> listMap = new HashMap<>();
+            Node curr = head;
+		
+            while(curr != null) {
+		listMap.put(curr.key, curr);
+                curr = curr.right;
+            }
+		
+            return listMap;
+	}
 }
