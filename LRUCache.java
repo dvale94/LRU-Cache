@@ -84,12 +84,12 @@ public class LRUCache {
             newEntry.value = value;
             newEntry.key = key;
             
-            if (map.size() > LRU_SIZE) {
-		map.remove(tail.key);
-		removeNode(tail);				
-		addToHead(newEntry);
+            if (map.size() < LRU_SIZE) {
+                addToHead(newEntry);
             } 
             else {
+		map.remove(tail.key);
+		removeNode(tail);				
 		addToHead(newEntry);
             }
 
